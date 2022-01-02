@@ -3,7 +3,7 @@ package com.ninglearn.employeerecord.domain;
 public class Employee {
 	private int id;
 	private String name;
-	private char gender;
+	private char gender; 
 	private String phone;
 	private double salary;
 	private String department; 
