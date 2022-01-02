@@ -1,9 +1,12 @@
 package com.ninglearn.employeerecord.view;
+import com.ninglearn.employeerecord.domain.Employee;
+import com.ninglearn.employeerecord.service.EmployeeService;
 import com.ninglearn.employeerecord.utils.Utility;
 
 public class EmployeeView {
 	private boolean loop = true;
 	private char key = ' ';
+	private EmployeeService employeeService = new EmployeeService(100);
 	
 	/*
 	 * Add the main menu for the system
@@ -21,7 +24,7 @@ public class EmployeeView {
 			key = Utility.readChar();
 			switch (key) {
 			case '1':
-				System.out.println("show record");
+				listEmployees();
 				break;
 			case '2':
 				System.out.println("add");
@@ -42,5 +45,20 @@ public class EmployeeView {
 			}
 		}while(loop);
 	}
-
+	
+	/*
+	 * show the employees information in the system
+	 */
+	public void listEmployees() {
+		System.out.println("\n\n----------------The List of Employee----------------");
+		System.out.println("ID\tName\tGender\tPhone\tSalary\tDepartment");
+		Employee[] employees = employeeService.list();
+		for(int i = 0; i < employees.length; i++) {
+			if(employees[i] == null) {
+				break;
+			}
+			System.out.println(employees[i]); //use toString
+		}
+		System.out.println("----------------Employee Info as above----------------");
+	}
 }
