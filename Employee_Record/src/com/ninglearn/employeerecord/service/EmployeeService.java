@@ -37,5 +37,26 @@ public class EmployeeService {
 		newEmployee.setId(++idCounter);
 		return true;
 	}
-
+	
+	/*
+	 * delete the employee's info 
+	 */
+	public boolean del(int delId) {
+		//find the index of the employee to delete. delId != index
+		int index = -1;
+		for(int i = 0; i < employeeNums; i++) {
+			if(delId == employees[i].getId()) {
+				index = i;
+			}
+		}
+		if(index == -1) {
+			return false;
+		}
+		//If the employee's info is found, all other info following will be moved one position ahead
+		for(int i = index; i < employeeNums - 1; i++) {
+			employees[i] = employees[i+1];
+		}
+		employees[--employeeNums] = null; //The last info position becomes null
+		return true;
+	}
 }

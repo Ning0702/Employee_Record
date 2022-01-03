@@ -30,7 +30,7 @@ public class EmployeeView {
 				addEmployee();
 				break;
 			case '3':
-				System.out.println("delete");
+				delEmployee();
 				break;
 			case '4':
 				System.out.println("find");
@@ -47,7 +47,7 @@ public class EmployeeView {
 	}
 	
 	/*
-	 * show the employees information in the system
+	 * show the employees information stored in the system
 	 */
 	public void listEmployees() {
 		System.out.println("\n\n----------------The List of Employee----------------");
@@ -83,6 +83,29 @@ public class EmployeeView {
 			System.out.println("----------------Info is successful added----------------");
 		} else {
 			System.out.println("----------------Info is not added----------------");
+		}
+	}
+	
+	/*
+	 * delete the employee information in the system
+	 */
+	public void delEmployee() {
+		System.out.println("----------------Delete Employee Info----------------");
+		System.out.println("Please input the employee's ID to delete (Input -1 to exit): ");
+		int delId = Utility.readInt();
+		if(delId == -1) {
+			System.out.println("----------------Exit the Deletion Function----------------");
+			return;
+		}
+		char choice = Utility.readConfirmSelection();
+		if(choice == 'Y') {
+			if(employeeService.del(delId)) {
+				System.out.println("----------------Delete Employee Info Successfully----------------");
+			} else {
+				System.out.println("----------------ID is not Found. Fail to Delete.----------------");
+			}
+		} else {
+			System.out.println("----------------Exit the Delete----------------");
 		}
 	}
 }
