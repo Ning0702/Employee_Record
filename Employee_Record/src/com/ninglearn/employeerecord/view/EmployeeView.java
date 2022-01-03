@@ -27,7 +27,7 @@ public class EmployeeView {
 				listEmployees();
 				break;
 			case '2':
-				System.out.println("add");
+				addEmployee();
 				break;
 			case '3':
 				System.out.println("delete");
@@ -60,5 +60,29 @@ public class EmployeeView {
 			System.out.println(employees[i]); //use toString
 		}
 		System.out.println("----------------Employee Info as above----------------");
+	}
+	
+	/*
+	 * Add employee's information
+	 */
+	public void addEmployee() {
+		System.out.println("----------------Please Add Employee Info----------------");
+		System.out.print("Name: ");
+		String name = Utility.readString(10);
+		System.out.print("Gender: ");
+		char gender = Utility.readChar();
+		System.out.print("Phone: ");
+		String phone = Utility.readString(12);
+		System.out.print("Salary: ");
+		int salary = Utility.readInt();
+		System.out.print("Department: ");
+		String department = Utility.readString(15);
+		
+		Employee newEmployee = new Employee(0, name, gender, phone, salary, department);
+		if(employeeService.add(newEmployee)) {
+			System.out.println("----------------Info is successful added----------------");
+		} else {
+			System.out.println("----------------Info is not added----------------");
+		}
 	}
 }

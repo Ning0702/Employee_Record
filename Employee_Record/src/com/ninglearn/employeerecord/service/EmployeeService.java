@@ -23,5 +23,19 @@ public class EmployeeService {
 		return employees;
 	}
 	
+	/*
+	 * add(object) for adding, and returns boolean
+	 */
+	public boolean add(Employee newEmployee) {
+		//not thinking enlarge the saving space
+		if(employeeNums == employees.length) {
+			System.out.println("The saving space is full. No more adding");
+			return false;
+		}
+		//add new data to array
+		employees[employeeNums++] = newEmployee;
+		newEmployee.setId(++idCounter);
+		return true;
+	}
 
 }
