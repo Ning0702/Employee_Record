@@ -36,7 +36,7 @@ public class EmployeeView {
 				findEmployee();
 				break;
 			case '5':
-				System.out.println("update");
+				updateEmployee();
 				break;
 			case '6':
 				System.out.println("log out");
@@ -122,5 +122,49 @@ public class EmployeeView {
 		} else {
 			System.out.println("----------------The Employee cann't be found----------------");
 		}
+	}
+	
+	/*
+	 * Update the employee's info by setXxx()
+	 */
+	public void updateEmployee() {
+		System.out.println("----------------Update Info----------------");
+		System.out.print("Please input ID to update info (Input -1 to exit): ");
+		int updateId = Utility.readInt();
+		if(updateId == -1) {
+			System.out.println("----------------Exit the Update----------------");
+			return;
+		}
+		Employee employee = employeeService.findById(updateId);
+		if(employee == null) {
+			System.out.println("----------------The ID does not Exist----------------");
+			return;
+		}
+		System.out.print("Name(" + employee.getName() + "): ");
+		String name = Utility.readString(15, "");
+		if(!"".equals(name)) {
+			employee.setName(name);
+		}
+		System.out.print("Gender(" + employee.getGender() + "): ");
+		char gender = Utility.readChar();
+		if(gender != employee.getGender()) {
+			employee.setGender(gender);
+		}
+		System.out.print("Phone(" + employee.getPhone() + "): ");
+		String phone = Utility.readString(12, "");
+		if(!"".equals(phone)) {
+			employee.setPhone(phone);
+		}
+		System.out.print("Salary(" + employee.getSalary() + "): ");
+		int salary = Utility.readInt();
+		if(salary != employee.getSalary()) {
+			employee.setSalary(salary);
+		}
+		System.out.print("Department(" + employee.getDepartment() + "): ");
+		String department = Utility.readString(15, "");
+		if(!"".equals(department)) {
+			employee.setDepartment(department);
+		}
+		System.out.println("----------------Update Successfully----------------");
 	}
 }
