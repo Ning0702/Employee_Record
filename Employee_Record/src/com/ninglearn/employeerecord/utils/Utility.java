@@ -117,7 +117,7 @@ public static String readString(int limit, String defaultValue) {
  * @return Y or N
  */
 public static char readConfirmSelection() {
-    System.out.println("Please input your choice(Y/N)");
+    System.out.print("Please input your choice(Y/N)");
     char c;
     for (; ; ) {//loop
     	//change the input letter into upper capitalized

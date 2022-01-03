@@ -39,8 +39,8 @@ public class EmployeeView {
 				updateEmployee();
 				break;
 			case '6':
-				System.out.println("log out");
-				loop = false;
+				exit();
+				System.out.println("The System is Stopped");
 				break;
 			}
 		}while(loop);
@@ -166,5 +166,14 @@ public class EmployeeView {
 			employee.setDepartment(department);
 		}
 		System.out.println("----------------Update Successfully----------------");
+	}
+	/*
+	 * Exit function
+	 */
+	public void exit() {
+		char c = Utility.readConfirmSelection();
+		if(c == 'Y') {
+			loop = false;
+		}
 	}
 }
