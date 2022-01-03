@@ -59,4 +59,17 @@ public class EmployeeService {
 		employees[--employeeNums] = null; //The last info position becomes null
 		return true;
 	}
+	
+	/*
+	 * find employee
+	 */
+	public Employee findById(int findId) {
+		for(int i = 0; i < employeeNums; i++) {
+			if(findId == employees[i].getId()) {
+				return employees[i];
+			}
+		}
+		return null;
+	}
 }
+

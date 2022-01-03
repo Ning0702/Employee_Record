@@ -33,7 +33,7 @@ public class EmployeeView {
 				delEmployee();
 				break;
 			case '4':
-				System.out.println("find");
+				findEmployee();
 				break;
 			case '5':
 				System.out.println("update");
@@ -106,6 +106,21 @@ public class EmployeeView {
 			}
 		} else {
 			System.out.println("----------------Exit the Delete----------------");
+		}
+	}
+	
+	/*
+	 * find the employee info
+	 */
+	public void findEmployee() {
+		System.out.println("----------------Find Employee----------------");
+		System.out.print("Please input the employee's ID: ");
+		int findId = Utility.readInt();
+		Employee employee = employeeService.findById(findId);
+		if(employee != null) {
+			System.out.println(employee);
+		} else {
+			System.out.println("----------------The Employee cann't be found----------------");
 		}
 	}
 }
